@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction Model</title>
+    <style>
+        /* Base Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+    
+        /* Header Styling */
+        header {
+            background-color: #35424a;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        /* Navigation Bar Styling */
+        nav {
+            background-color: #e8491d;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #ffffff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #dddddd; /* Subtle hover effect for links */
+        }
+        /* Container for Content */
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Section Spacing */
+        section {
+            margin-bottom: 40px;
+        }
+    
+        /* Section Headings */
+        h2 {
+            border-bottom: 2px solid #e8491d;
+            padding-bottom: 10px;
+            color: #35424a;
+        }
+    
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+    
+        table, th, td {
+            border: 1px solid #dddddd;
+        }
+    
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+    
+        th {
+            background-color: #f2f2f2;
+        }
+    
+        /* Visualization Styling */
+        .visualization-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 100%; /* Container respects page width */
+            overflow: hidden;
+        }
+    
+        /* Image and Text Row for Visualizations */
+        .image-text-row {
+            display: flex;
+            flex-direction: row;
+            align-items: start;
+            gap: 20px;
+            max-width: 100%;
+        }
+    
+        /* Image Styling */
+        .image-text-row img {
+            width: 100%;
+            max-width: 700px; /* Maintains natural width */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Text Content Styling for Images */
+        .text-content {
+            flex: 1; /* Allows text to take the remaining space */
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .image-text-row {
+                flex-direction: column; /* Stacks image and text vertically */
+                align-items: center;
+            }
+    
+            .image-text-row img, .text-content {
+                width: 100%; /* Full width for mobile */
+                max-width: none; /* Removes max-width restriction on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>House Price Prediction Model, Group 119</h1>
+    </header>
+
+    <nav>
+        <a href="#introduction">Introduction</a>
+        <a href="#problem-definition">Problem Definition</a>
+        <a href="#methods">Methods</a>
+        <a href="#results">Results</a>
+        <a href="#references">References</a>
+        <a href="#contribution">Contribution</a>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Introduction/Background Section -->
+        <section id="introduction">
+            <h2>Introduction/Background</h2>
+            <p>Predicting house prices is critical to the real estate industry, as it provides valuable insight for buyers, sellers, and even investors. Since we have access to housing data, we want to build a model that takes into account various home characteristics, such as square footage and home type, for accurate and reliable home price predictions.</p>
+
+            <p>Studies such as by Kok et al. (2017) utilized a linear regression model to predict home prices with features including house size, number of rooms, and location. The model was proven accurate based on the given training dataset, and the results were easy to interpret.</p>
+            
+            <p>We will be using the Ames Housing Dataset, an alternative to the popular Boston Dataset found in James et al. (2018), but with more features and observations. This dataset can be found at the following link: <a href="https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/data?select=data_description.txt" target="_blank">Ames Housing Dataset on Kaggle</a></p>
+        </section>
+        
+        <!-- Problem Definition Section -->
+        <section id="problem-definition">
+            <h2>Problem Definition</h2>
+            
+            <h3>Problem</h3>
+            <p>The problem we are addressing is the challenge of accurately predicting house prices located in Ames, Iowa. Traditional methods often rely on simple models or manual predictions which don’t capture the more complex relationships between predictive variables. This leads buyers, sellers, and investors to make suboptimal decisions because of a lack of accurate information.</p>
+            
+            <h3>Motivation</h3>
+            <p>By accurately automating house price prediction, it would help homebuyers, sellers, real estate agents, and investors make informed decisions.</p>
+        </section>
+        
+        <!-- Methods Section -->
+        <section id="methods">
+            <h2>Methods</h2>
+            
+            <h3>Model information:</h3>
+            <ul>
+                <li>Preprocessing:</li>
+                <ul>
+                    <li>Removing Columns with Excessive Missing Values</li>
+                    <li>Imputation of Missing Values</li>
+                    <li>Encoding Categorical Variables</li>
+                    <li>Combining training and testing sets</li>
+                </ul>
+                <li>Model:</li>
+                <ul>
+                    <li>LASSO Regression</li>
+                </ul>
+            </ul>
+            
+            <p>Our methods for data processing and the use of the Lasso Regression model are well suited to our project due to the nature of our data. The preprocessing steps ensure consistency through our dataset by removing data columns that have too much information missing and then encoding categories appropriately. Lasso regression is then used for its ability to perform feature selection and to prevent overfitting through regularization. The tuning of the hyperparameter along with the subsequent validation of the model, gives an accurate and generalizable prediction model.</p>
+            
+            <p>This is done by first loading both the training and testing sets and adding a TrainFlag to distinguish between them and concatenating it into one data frame, creating a consistent preprocessing process. Afterwards we remove columns with excessive missing values, our threshold sits at 50%. SimpleImputer is used to handle missing data values, with all the data turning into a numerical format to use regression models on. The median was used for imputation because it is effective against outliers and any skewed distributions that we could come across, such as property sizes or prices. We also used mode imputation for categorical data to simplify the process when missing values are mostly random.</p>
+            
+            <p>Lasso regression is used to reduce overfitting and to select the most important features of the data. This algorithm uses L1 regularization and the lasso model with a specific alpha value to find the optimal values. The alpha values tested range from [0.0001 – 1.0] to find the optimal regularization strength that will minimize the prediction error. The model then is trained with the data and the best alpha value is found for the prediction to be as accurate as possible. This lasso regression model was used to basically function as a feature selection since our data set has so many features and complexity needed to be reduced. The regularization used also works to discourage the model from overfitting the noise in the data. The linear nature also helps with the interpretability of the data.</p>
+        </section>
+        
+        <!-- Results and Expectations Section -->
+        <section id="results">
+            <h2>Results and Expectations</h2>
+            
+            <h3>Visualizations:</h3>
+            <div class="visualization-container">
+
+                    <!-- Actual vs Predicted Sales Prices Section -->
+                    <div class="image-text-row">
+                        <img src="Actual_vs_Predicted_sales_prices.png" alt="Actual vs Predicted Sales Prices">
+                        <div class="text-content">
+                            <p>This image is a scatterplot displaying the relationship between the actual and predicted sale prices for the training dataset. Each point represents a house, with the actual price on the x-axis and the predicted price on the y-axis.</p>
+                            <p>The dashed red line represents a perfect prediction, where predicted prices match the actual prices. The scatterplot shows that the model is fairly accurate, as most points are close to this ideal line. However, there is some inaccuracy at higher price ranges, indicating limitations in the model’s performance.</p>
+                        </div>
+                    </div>
+                
+                    <!-- Distribution of Residuals Section -->
+                    <div class="image-text-row">
+                        <img src="Description_of_Residuals.png" alt="Description of Residuals">
+                        <div class="text-content">
+                            <p>This image is a histogram displaying the distribution of residuals, which are the differences between actual and predicted sale prices for the training dataset. The residuals are centered around zero, indicating that the model’s predictions are generally unbiased.</p>
+                            <p>The spread of the distribution shows some outliers, with a slight right skew, suggesting a tendency for underprediction in higher-priced homes. The distribution of residuals provides insight into the model’s error characteristics.</p>
+                        </div>
+                    </div>
+                </div>
+
+            
+            <h3>Quantitative Metrics:</h3>
+            <ul>
+                <li>Moderate RMSE (Root Mean Squared Error): $41,578</li>
+                <li>High R² Score: 0.9301</li>
+            </ul>
+            
+            <p>The model performed decently well, with a moderate RMSE and high R² score. The model explains a significant portion of the variance in price sales and makes reasonably accurate estimates on the prices. The scatter plot is the best visual indicator of the strong alignment between the actual and the predicted values for the majority of the data points that were given. We found that there are areas of improvement in the high-value homes, and a slight right skew in the residuals, showing that the errors are not normally distributed as they should be. This is further displayed in the moderate RMSE of $41,578, which indicates that the model is somewhat inaccurate in estimating home prices. This may be due to overfitting of the model (which also aligns with the high R² value), but further testing needs to be done. The model faced difficulties due to the limitations of linear models, and the complex nonlinear interactions that are present when working with the housing market. There is also a lack of high-price homes, which could more severely skew our data towards the lower-priced houses in the dataset. Due to the way that our model tended to underpredict the higher sale points, we currently believe that the error distribution is not symmetrical and suggests that we could use a more complex modeling technique to more accurately capture the relationship.</p>
+        </section>
+        
+        <!-- References Section -->
+        <section id="references">
+            <h2>References</h2>
+            <ul>
+                <li>Kok, N., Monkkonen, P., & Quigley, J. M. (2014). Land use regulations and the value of land and housing: An intra-metropolitan analysis. <em>Journal of Urban Economics, 81</em>, 136–148.</li>
+                <li>Manning, W. G. (1998). The logged dependent variable, heteroscedasticity, and the retransformation problem. <em>Journal of Health Economics, 17</em>(3), 283–295.</li>
+                <li>James, G., et al. (2018). <em>Introduction to Statistical Learning</em>. Springer.</li>
+            </ul>
+        </section>
+        
+        <!-- Contribution Table Section -->
+        <section id="contribution">
+            <h2>Contribution Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Contribution to the Proposal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lohith Dasari</td>
+                        <td>Readme files</td>
+                    </tr>
+                    <tr>
+                        <td>Kushal Dudipala</td>
+                        <td>Creating the model, Testing and training the model, Website, Gantt chart</td>
+                    </tr>
+                    <tr>
+                        <td>Axel Diaz</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Ben DiPrete</td>
+                        <td>Editing the code</td>
+                    </tr>
+                    <tr>
+                        <td>Miguel Cruz</td>
+                        <td>Results, Methods</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+    </div>
+
+</body>
+</html>
